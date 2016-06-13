@@ -1,0 +1,12 @@
+{ There are no errors in this file! }
+program T1L80ok;
+
+
+
+
+var
+
+    ia : Array[0..9] of Integer;
+
+begin
+end.

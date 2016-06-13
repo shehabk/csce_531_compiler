@@ -1,0 +1,1426 @@
+ #    2
+ #    3
+ #    4
+ #    5
+ #    6
+ #    7
+ #    8
+ #    9
+				# b_global_decl (C, alignment = 4, size = 4)
+.globl C
+	.data
+	.align	4
+	.type	C, @object
+	.size	C, 4
+C:
+	.zero	4
+				# b_global_decl (B, alignment = 4, size = 4)
+.globl B
+	.align	4
+	.type	B, @object
+	.size	B, 4
+B:
+	.zero	4
+				# b_global_decl (A, alignment = 4, size = 4)
+.globl A
+	.align	4
+	.type	A, @object
+	.size	A, 4
+A:
+	.zero	4
+ #   10
+				# b_global_decl (X, alignment = 4, size = 4)
+.globl X
+	.align	4
+	.type	X, @object
+	.size	X, 4
+X:
+	.zero	4
+ #   11
+				# b_global_decl (Y, alignment = 1, size = 1)
+.globl Y
+	.align	1
+	.type	Y, @object
+	.size	Y, 1
+Y:
+	.zero	1
+ #   12
+				# b_global_decl (Z, alignment = 4, size = 4)
+.globl Z
+	.align	4
+	.type	Z, @object
+	.size	Z, 4
+Z:
+	.zero	4
+ #   13
+				# b_global_decl (W, alignment = 8, size = 8)
+.globl W
+	.align	8
+	.type	W, @object
+	.size	W, 8
+W:
+	.zero	8
+ #   14
+				# b_global_decl (Ca, alignment = 1, size = 8)
+.globl Ca
+	.align	1
+	.type	Ca, @object
+	.size	Ca, 8
+Ca:
+	.zero	8
+ #   15
+				# b_global_decl (Ia, alignment = 4, size = 24)
+.globl Ia
+	.align	4
+	.type	Ia, @object
+	.size	Ia, 24
+Ia:
+	.zero	24
+ #   16
+				# b_global_decl (Ra, alignment = 8, size = 24)
+.globl Ra
+	.align	8
+	.type	Ra, @object
+	.size	Ra, 24
+Ra:
+	.zero	24
+ #   17
+ #   18
+ #   19
+ #   20
+ #   21
+ #   22
+ #   23
+ #   24
+ #   25
+ #   26
+ #   27
+ #   28
+ #   29
+ #   30
+ #   31
+ #   32
+ #   33
+ #   34
+ #   35
+ #   36
+ #   37
+				# b_func_prologue (main)
+	.text
+.global main
+	.type	main, @function
+main:
+	pushl	%ebp
+	movl	%esp, %ebp
+	andl	$-16, %esp
+ #   38
+				# b_push_ext_addr (A)
+	subl	$8, %esp
+	movl	$A, (%esp)
+				# b_push_const_int (1)
+	movl	$1, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_assign (signed long int)
+	movl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	movl	%edx, (%eax)
+	movl	%edx, (%esp)
+				# b_pop ()
+	addl	$8, %esp
+ #   39
+				# b_push_ext_addr (B)
+	subl	$8, %esp
+	movl	$B, (%esp)
+				# b_push_const_int (1)
+	movl	$1, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_assign (signed long int)
+	movl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	movl	%edx, (%eax)
+	movl	%edx, (%esp)
+				# b_pop ()
+	addl	$8, %esp
+ #   40
+				# b_push_ext_addr (C)
+	subl	$8, %esp
+	movl	$C, (%esp)
+				# b_push_const_int (1)
+	movl	$1, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_assign (signed long int)
+	movl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	movl	%edx, (%eax)
+	movl	%edx, (%esp)
+				# b_pop ()
+	addl	$8, %esp
+ #   41
+ #   42
+.LC1:
+				# b_push_ext_addr (B)
+	subl	$8, %esp
+	movl	$B, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_push_const_int (99)
+	movl	$99, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_arith_rel_op ( < , signed long int)
+	movl	(%esp), %ecx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	cmpl	%ecx, %eax
+	setl	%al
+	movzbl	%al, %eax
+	movl	%eax, (%esp)
+				# b_convert (signed long int -> signed char)
+				# b_cond_jump (signed char, ZERO,
+				#              .LC0)
+	movsbl	(%esp), %eax
+	addl	$8, %esp
+	testl	%eax, %eax
+	je	.LC0
+ #   43
+				# b_push_ext_addr (A)
+	subl	$8, %esp
+	movl	$A, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_push_const_int (9)
+	movl	$9, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_arith_rel_op ( > , signed long int)
+	movl	(%esp), %ecx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	cmpl	%ecx, %eax
+	setg	%al
+	movzbl	%al, %eax
+	movl	%eax, (%esp)
+				# b_convert (signed long int -> signed char)
+				# b_cond_jump (signed char, ZERO,
+				#              .LC2)
+	movsbl	(%esp), %eax
+	addl	$8, %esp
+	testl	%eax, %eax
+	je	.LC2
+ #   44
+				# b_push_ext_addr (B)
+	subl	$8, %esp
+	movl	$B, (%esp)
+				# b_push_ext_addr (B)
+	subl	$8, %esp
+	movl	$B, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_push_const_int (2)
+	movl	$2, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_arith_rel_op ( * , signed long int)
+	movl	(%esp), %ecx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	imull	%ecx, %eax
+	movl	%eax, (%esp)
+				# b_assign (signed long int)
+	movl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	movl	%edx, (%eax)
+	movl	%edx, (%esp)
+				# b_pop ()
+	addl	$8, %esp
+ #   45
+ #   46
+				# b_push_ext_addr (A)
+	subl	$8, %esp
+	movl	$A, (%esp)
+				# b_push_ext_addr (A)
+	subl	$8, %esp
+	movl	$A, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_push_const_int (3)
+	movl	$3, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_arith_rel_op ( + , signed long int)
+	movl	(%esp), %ecx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	addl	%ecx, %eax
+	movl	%eax, (%esp)
+				# b_assign (signed long int)
+	movl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	movl	%edx, (%eax)
+	movl	%edx, (%esp)
+				# b_pop ()
+	addl	$8, %esp
+				# b_jump ( destination = .LC3 )
+	jmp	.LC3
+.LC2:
+ #   47
+				# b_push_ext_addr (B)
+	subl	$8, %esp
+	movl	$B, (%esp)
+				# b_push_ext_addr (B)
+	subl	$8, %esp
+	movl	$B, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_push_const_int (3)
+	movl	$3, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_arith_rel_op ( * , signed long int)
+	movl	(%esp), %ecx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	imull	%ecx, %eax
+	movl	%eax, (%esp)
+				# b_assign (signed long int)
+	movl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	movl	%edx, (%eax)
+	movl	%edx, (%esp)
+				# b_pop ()
+	addl	$8, %esp
+ #   48
+ #   49
+				# b_push_ext_addr (A)
+	subl	$8, %esp
+	movl	$A, (%esp)
+				# b_push_ext_addr (A)
+	subl	$8, %esp
+	movl	$A, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_push_const_int (2)
+	movl	$2, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_arith_rel_op ( * , signed long int)
+	movl	(%esp), %ecx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	imull	%ecx, %eax
+	movl	%eax, (%esp)
+				# b_assign (signed long int)
+	movl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	movl	%edx, (%eax)
+	movl	%edx, (%esp)
+				# b_pop ()
+	addl	$8, %esp
+.LC3:
+ #   50
+ #   51
+				# b_alloc_arglist (0 bytes)
+	movl	%esp, %eax
+	subl	$4, %esp
+	andl	$-16, %esp
+	movl	%eax, (%esp)
+	subl	$0, %esp
+				# b_funcall_by_name (Print_abc, void)
+	call	Print_abc
+	addl	$0, %esp
+	movl	(%esp), %ecx
+	movl	%ecx, %esp
+ #   52
+ #   53
+				# b_push_ext_addr (C)
+	subl	$8, %esp
+	movl	$C, (%esp)
+				# b_push_ext_addr (C)
+	subl	$8, %esp
+	movl	$C, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_push_const_int (1)
+	movl	$1, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_arith_rel_op ( + , signed long int)
+	movl	(%esp), %ecx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	addl	%ecx, %eax
+	movl	%eax, (%esp)
+				# b_assign (signed long int)
+	movl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	movl	%edx, (%eax)
+	movl	%edx, (%esp)
+				# b_pop ()
+	addl	$8, %esp
+				# b_jump ( destination = .LC1 )
+	jmp	.LC1
+.LC0:
+ #   54
+ #   55
+				# b_push_ext_addr (X)
+	subl	$8, %esp
+	movl	$X, (%esp)
+				# b_push_const_int (9)
+	movl	$9, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_assign (signed long int)
+	movl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	movl	%edx, (%eax)
+	movl	%edx, (%esp)
+				# b_pop ()
+	addl	$8, %esp
+ #   56
+ #   57
+.LC5:
+				# b_push_ext_addr (X)
+	subl	$8, %esp
+	movl	$X, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_push_const_int (0)
+	movl	$0, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_arith_rel_op ( >= , signed long int)
+	movl	(%esp), %ecx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	cmpl	%ecx, %eax
+	setge	%al
+	movzbl	%al, %eax
+	movl	%eax, (%esp)
+				# b_convert (signed long int -> signed char)
+				# b_cond_jump (signed char, ZERO,
+				#              .LC4)
+	movsbl	(%esp), %eax
+	addl	$8, %esp
+	testl	%eax, %eax
+	je	.LC4
+ #   58
+				# b_alloc_arglist (0 bytes)
+	movl	%esp, %eax
+	subl	$4, %esp
+	andl	$-16, %esp
+	movl	%eax, (%esp)
+	subl	$0, %esp
+				# b_funcall_by_name (Print_x, void)
+	call	Print_x
+	addl	$0, %esp
+	movl	(%esp), %ecx
+	movl	%ecx, %esp
+ #   59
+ #   60
+				# b_push_ext_addr (X)
+	subl	$8, %esp
+	movl	$X, (%esp)
+				# b_push_ext_addr (X)
+	subl	$8, %esp
+	movl	$X, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_push_const_int (1)
+	movl	$1, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_arith_rel_op ( - , signed long int)
+	movl	(%esp), %ecx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	subl	%ecx, %eax
+	movl	%eax, (%esp)
+				# b_assign (signed long int)
+	movl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	movl	%edx, (%eax)
+	movl	%edx, (%esp)
+				# b_pop ()
+	addl	$8, %esp
+				# b_jump ( destination = .LC5 )
+	jmp	.LC5
+.LC4:
+ #   61
+ #   62
+				# b_push_ext_addr (A)
+	subl	$8, %esp
+	movl	$A, (%esp)
+				# b_push_const_int (-1)
+	movl	$-1, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_assign (signed long int)
+	movl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	movl	%edx, (%eax)
+	movl	%edx, (%esp)
+				# b_pop ()
+	addl	$8, %esp
+ #   63
+				# b_push_ext_addr (B)
+	subl	$8, %esp
+	movl	$B, (%esp)
+				# b_push_const_int (0)
+	movl	$0, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_assign (signed long int)
+	movl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	movl	%edx, (%eax)
+	movl	%edx, (%esp)
+				# b_pop ()
+	addl	$8, %esp
+ #   64
+				# b_push_ext_addr (C)
+	subl	$8, %esp
+	movl	$C, (%esp)
+				# b_push_const_int (1)
+	movl	$1, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_assign (signed long int)
+	movl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	movl	%edx, (%eax)
+	movl	%edx, (%esp)
+				# b_pop ()
+	addl	$8, %esp
+ #   65
+ #   66
+				# b_push_ext_addr (A)
+	subl	$8, %esp
+	movl	$A, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_push_ext_addr (B)
+	subl	$8, %esp
+	movl	$B, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_arith_rel_op ( > , signed long int)
+	movl	(%esp), %ecx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	cmpl	%ecx, %eax
+	setg	%al
+	movzbl	%al, %eax
+	movl	%eax, (%esp)
+				# b_convert (signed long int -> signed char)
+				# b_cond_jump (signed char, ZERO,
+				#              .LC6)
+	movsbl	(%esp), %eax
+	addl	$8, %esp
+	testl	%eax, %eax
+	je	.LC6
+ #   67
+ #   68
+				# b_alloc_arglist (0 bytes)
+	movl	%esp, %eax
+	subl	$4, %esp
+	andl	$-16, %esp
+	movl	%eax, (%esp)
+	subl	$0, %esp
+				# b_funcall_by_name (Print_oops, void)
+	call	Print_oops
+	addl	$0, %esp
+	movl	(%esp), %ecx
+	movl	%ecx, %esp
+				# b_jump ( destination = .LC7 )
+	jmp	.LC7
+.LC6:
+ #   69
+				# b_push_ext_addr (B)
+	subl	$8, %esp
+	movl	$B, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_push_ext_addr (C)
+	subl	$8, %esp
+	movl	$C, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_push_ext_addr (A)
+	subl	$8, %esp
+	movl	$A, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_arith_rel_op ( + , signed long int)
+	movl	(%esp), %ecx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	addl	%ecx, %eax
+	movl	%eax, (%esp)
+				# b_arith_rel_op ( == , signed long int)
+	movl	(%esp), %ecx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	cmpl	%ecx, %eax
+	sete	%al
+	movzbl	%al, %eax
+	movl	%eax, (%esp)
+				# b_convert (signed long int -> signed char)
+				# b_cond_jump (signed char, ZERO,
+				#              .LC8)
+	movsbl	(%esp), %eax
+	addl	$8, %esp
+	testl	%eax, %eax
+	je	.LC8
+ #   70
+				# b_alloc_arglist (0 bytes)
+	movl	%esp, %eax
+	subl	$4, %esp
+	andl	$-16, %esp
+	movl	%eax, (%esp)
+	subl	$0, %esp
+				# b_funcall_by_name (Print_7, void)
+	call	Print_7
+	addl	$0, %esp
+	movl	(%esp), %ecx
+	movl	%ecx, %esp
+ #   71
+				# b_alloc_arglist (0 bytes)
+	movl	%esp, %eax
+	subl	$4, %esp
+	andl	$-16, %esp
+	movl	%eax, (%esp)
+	subl	$0, %esp
+				# b_funcall_by_name (Print_1, void)
+	call	Print_1
+	addl	$0, %esp
+	movl	(%esp), %ecx
+	movl	%ecx, %esp
+ #   72
+				# b_push_const_int (1)
+	movl	$1, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_convert (signed long int -> signed char)
+				# b_cond_jump (signed char, ZERO,
+				#              .LC9)
+	movsbl	(%esp), %eax
+	addl	$8, %esp
+	testl	%eax, %eax
+	je	.LC9
+				# b_alloc_arglist (0 bytes)
+	movl	%esp, %eax
+	subl	$4, %esp
+	andl	$-16, %esp
+	movl	%eax, (%esp)
+	subl	$0, %esp
+				# b_funcall_by_name (Print_2, void)
+	call	Print_2
+	addl	$0, %esp
+	movl	(%esp), %ecx
+	movl	%ecx, %esp
+.LC9:
+ #   73
+ #   74
+				# b_alloc_arglist (0 bytes)
+	movl	%esp, %eax
+	subl	$4, %esp
+	andl	$-16, %esp
+	movl	%eax, (%esp)
+	subl	$0, %esp
+				# b_funcall_by_name (Print_newline, void)
+	call	Print_newline
+	addl	$0, %esp
+	movl	(%esp), %ecx
+	movl	%ecx, %esp
+				# b_jump ( destination = .LC10 )
+	jmp	.LC10
+.LC8:
+ #   75
+				# b_alloc_arglist (0 bytes)
+	movl	%esp, %eax
+	subl	$4, %esp
+	andl	$-16, %esp
+	movl	%eax, (%esp)
+	subl	$0, %esp
+				# b_funcall_by_name (Print_oops, void)
+	call	Print_oops
+	addl	$0, %esp
+	movl	(%esp), %ecx
+	movl	%ecx, %esp
+.LC10:
+ #   76
+ #   77
+				# b_alloc_arglist (0 bytes)
+	movl	%esp, %eax
+	subl	$4, %esp
+	andl	$-16, %esp
+	movl	%eax, (%esp)
+	subl	$0, %esp
+				# b_funcall_by_name (Print_is, void)
+	call	Print_is
+	addl	$0, %esp
+	movl	(%esp), %ecx
+	movl	%ecx, %esp
+.LC7:
+ #   78
+ #   79
+				# b_alloc_arglist (0 bytes)
+	movl	%esp, %eax
+	subl	$4, %esp
+	andl	$-16, %esp
+	movl	%eax, (%esp)
+	subl	$0, %esp
+				# b_funcall_by_name (Print_grooviest, void)
+	call	Print_grooviest
+	addl	$0, %esp
+	movl	(%esp), %ecx
+	movl	%ecx, %esp
+ #   80
+ #   81
+ #   82
+				# b_push_ext_addr (A)
+	subl	$8, %esp
+	movl	$A, (%esp)
+				# b_push_const_int (-1)
+	movl	$-1, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_assign (signed long int)
+	movl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	movl	%edx, (%eax)
+	movl	%edx, (%esp)
+				# b_pop ()
+	addl	$8, %esp
+ #   83
+ #   84
+.LC12:
+				# b_push_ext_addr (A)
+	subl	$8, %esp
+	movl	$A, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_push_const_int (3)
+	movl	$3, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_arith_rel_op ( > , signed long int)
+	movl	(%esp), %ecx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	cmpl	%ecx, %eax
+	setg	%al
+	movzbl	%al, %eax
+	movl	%eax, (%esp)
+				# b_convert (signed long int -> signed char)
+				# b_cond_jump (signed char, ZERO,
+				#              .LC11)
+	movsbl	(%esp), %eax
+	addl	$8, %esp
+	testl	%eax, %eax
+	je	.LC11
+ #   85
+				# b_alloc_arglist (0 bytes)
+	movl	%esp, %eax
+	subl	$4, %esp
+	andl	$-16, %esp
+	movl	%eax, (%esp)
+	subl	$0, %esp
+				# b_funcall_by_name (Print_oops, void)
+	call	Print_oops
+	addl	$0, %esp
+	movl	(%esp), %ecx
+	movl	%ecx, %esp
+				# b_jump ( destination = .LC12 )
+	jmp	.LC12
+.LC11:
+ #   86
+ #   87
+.LC14:
+				# b_push_ext_addr (A)
+	subl	$8, %esp
+	movl	$A, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_push_const_int (3)
+	movl	$3, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_arith_rel_op ( < , signed long int)
+	movl	(%esp), %ecx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	cmpl	%ecx, %eax
+	setl	%al
+	movzbl	%al, %eax
+	movl	%eax, (%esp)
+				# b_convert (signed long int -> signed char)
+				# b_cond_jump (signed char, ZERO,
+				#              .LC13)
+	movsbl	(%esp), %eax
+	addl	$8, %esp
+	testl	%eax, %eax
+	je	.LC13
+ #   88
+ #   89
+				# b_alloc_arglist (0 bytes)
+	movl	%esp, %eax
+	subl	$4, %esp
+	andl	$-16, %esp
+	movl	%eax, (%esp)
+	subl	$0, %esp
+				# b_funcall_by_name (Print_outer, void)
+	call	Print_outer
+	addl	$0, %esp
+	movl	(%esp), %ecx
+	movl	%ecx, %esp
+ #   90
+ #   91
+				# b_push_ext_addr (B)
+	subl	$8, %esp
+	movl	$B, (%esp)
+				# b_push_const_int (0)
+	movl	$0, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_assign (signed long int)
+	movl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	movl	%edx, (%eax)
+	movl	%edx, (%esp)
+				# b_pop ()
+	addl	$8, %esp
+ #   92
+.LC16:
+				# b_push_ext_addr (B)
+	subl	$8, %esp
+	movl	$B, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_push_ext_addr (A)
+	subl	$8, %esp
+	movl	$A, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_push_const_int (1)
+	movl	$1, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_arith_rel_op ( + , signed long int)
+	movl	(%esp), %ecx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	addl	%ecx, %eax
+	movl	%eax, (%esp)
+				# b_arith_rel_op ( < , signed long int)
+	movl	(%esp), %ecx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	cmpl	%ecx, %eax
+	setl	%al
+	movzbl	%al, %eax
+	movl	%eax, (%esp)
+				# b_convert (signed long int -> signed char)
+				# b_cond_jump (signed char, ZERO,
+				#              .LC15)
+	movsbl	(%esp), %eax
+	addl	$8, %esp
+	testl	%eax, %eax
+	je	.LC15
+ #   93
+				# b_alloc_arglist (0 bytes)
+	movl	%esp, %eax
+	subl	$4, %esp
+	andl	$-16, %esp
+	movl	%eax, (%esp)
+	subl	$0, %esp
+				# b_funcall_by_name (Print_inner, void)
+	call	Print_inner
+	addl	$0, %esp
+	movl	(%esp), %ecx
+	movl	%ecx, %esp
+ #   94
+ #   95
+				# b_push_ext_addr (C)
+	subl	$8, %esp
+	movl	$C, (%esp)
+				# b_push_const_int (0)
+	movl	$0, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_assign (signed long int)
+	movl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	movl	%edx, (%eax)
+	movl	%edx, (%esp)
+				# b_pop ()
+	addl	$8, %esp
+ #   96
+.LC18:
+				# b_push_ext_addr (C)
+	subl	$8, %esp
+	movl	$C, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_push_const_int (5)
+	movl	$5, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_arith_rel_op ( < , signed long int)
+	movl	(%esp), %ecx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	cmpl	%ecx, %eax
+	setl	%al
+	movzbl	%al, %eax
+	movl	%eax, (%esp)
+				# b_convert (signed long int -> signed char)
+				# b_cond_jump (signed char, ZERO,
+				#              .LC17)
+	movsbl	(%esp), %eax
+	addl	$8, %esp
+	testl	%eax, %eax
+	je	.LC17
+ #   97
+				# b_alloc_arglist (0 bytes)
+	movl	%esp, %eax
+	subl	$4, %esp
+	andl	$-16, %esp
+	movl	%eax, (%esp)
+	subl	$0, %esp
+				# b_funcall_by_name (Print_inner_inner, void)
+	call	Print_inner_inner
+	addl	$0, %esp
+	movl	(%esp), %ecx
+	movl	%ecx, %esp
+ #   98
+ #   99
+				# b_push_ext_addr (C)
+	subl	$8, %esp
+	movl	$C, (%esp)
+				# b_push_ext_addr (C)
+	subl	$8, %esp
+	movl	$C, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_push_const_int (1)
+	movl	$1, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_arith_rel_op ( + , signed long int)
+	movl	(%esp), %ecx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	addl	%ecx, %eax
+	movl	%eax, (%esp)
+				# b_assign (signed long int)
+	movl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	movl	%edx, (%eax)
+	movl	%edx, (%esp)
+				# b_pop ()
+	addl	$8, %esp
+				# b_jump ( destination = .LC18 )
+	jmp	.LC18
+.LC17:
+ #  100
+ #  101
+ #  102
+				# b_push_ext_addr (B)
+	subl	$8, %esp
+	movl	$B, (%esp)
+				# b_push_ext_addr (B)
+	subl	$8, %esp
+	movl	$B, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_push_const_int (1)
+	movl	$1, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_arith_rel_op ( + , signed long int)
+	movl	(%esp), %ecx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	addl	%ecx, %eax
+	movl	%eax, (%esp)
+				# b_assign (signed long int)
+	movl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	movl	%edx, (%eax)
+	movl	%edx, (%esp)
+				# b_pop ()
+	addl	$8, %esp
+				# b_jump ( destination = .LC16 )
+	jmp	.LC16
+.LC15:
+ #  103
+ #  104
+ #  105
+				# b_push_ext_addr (A)
+	subl	$8, %esp
+	movl	$A, (%esp)
+				# b_push_ext_addr (A)
+	subl	$8, %esp
+	movl	$A, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_push_const_int (1)
+	movl	$1, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_arith_rel_op ( + , signed long int)
+	movl	(%esp), %ecx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	addl	%ecx, %eax
+	movl	%eax, (%esp)
+				# b_assign (signed long int)
+	movl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	movl	%edx, (%eax)
+	movl	%edx, (%esp)
+				# b_pop ()
+	addl	$8, %esp
+				# b_jump ( destination = .LC14 )
+	jmp	.LC14
+.LC13:
+ #  106
+ #  107
+ #  108
+				# b_push_ext_addr (X)
+	subl	$8, %esp
+	movl	$X, (%esp)
+				# b_push_const_int (9)
+	movl	$9, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_assign (signed long int)
+	movl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	movl	%edx, (%eax)
+	movl	%edx, (%esp)
+				# b_pop ()
+	addl	$8, %esp
+ #  109
+ #  110
+.LC20:
+				# b_push_ext_addr (X)
+	subl	$8, %esp
+	movl	$X, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_push_const_int (0)
+	movl	$0, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_arith_rel_op ( >= , signed long int)
+	movl	(%esp), %ecx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	cmpl	%ecx, %eax
+	setge	%al
+	movzbl	%al, %eax
+	movl	%eax, (%esp)
+				# b_convert (signed long int -> signed char)
+				# b_cond_jump (signed char, ZERO,
+				#              .LC19)
+	movsbl	(%esp), %eax
+	addl	$8, %esp
+	testl	%eax, %eax
+	je	.LC19
+ #  111
+				# b_alloc_arglist (0 bytes)
+	movl	%esp, %eax
+	subl	$4, %esp
+	andl	$-16, %esp
+	movl	%eax, (%esp)
+	subl	$0, %esp
+				# b_funcall_by_name (Print_looping, void)
+	call	Print_looping
+	addl	$0, %esp
+	movl	(%esp), %ecx
+	movl	%ecx, %esp
+ #  112
+ #  113
+				# b_push_ext_addr (X)
+	subl	$8, %esp
+	movl	$X, (%esp)
+				# b_push_ext_addr (X)
+	subl	$8, %esp
+	movl	$X, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_push_const_int (1)
+	movl	$1, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_arith_rel_op ( - , signed long int)
+	movl	(%esp), %ecx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	subl	%ecx, %eax
+	movl	%eax, (%esp)
+				# b_assign (signed long int)
+	movl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	movl	%edx, (%eax)
+	movl	%edx, (%esp)
+				# b_pop ()
+	addl	$8, %esp
+				# b_jump ( destination = .LC20 )
+	jmp	.LC20
+.LC19:
+ #  114
+ #  115
+ #  116
+				# b_push_ext_addr (A)
+	subl	$8, %esp
+	movl	$A, (%esp)
+				# b_push_ext_addr (A)
+	subl	$8, %esp
+	movl	$A, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_push_const_int (1)
+	movl	$1, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_arith_rel_op ( + , signed long int)
+	movl	(%esp), %ecx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	addl	%ecx, %eax
+	movl	%eax, (%esp)
+				# b_assign (signed long int)
+	movl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	movl	%edx, (%eax)
+	movl	%edx, (%esp)
+				# b_pop ()
+	addl	$8, %esp
+.LC21:
+ #  117
+ #  118
+ #  119
+				# b_push_ext_addr (X)
+	subl	$8, %esp
+	movl	$X, (%esp)
+				# b_push_ext_addr (X)
+	subl	$8, %esp
+	movl	$X, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_push_const_int (1)
+	movl	$1, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_arith_rel_op ( + , signed long int)
+	movl	(%esp), %ecx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	addl	%ecx, %eax
+	movl	%eax, (%esp)
+				# b_assign (signed long int)
+	movl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	movl	%edx, (%eax)
+	movl	%edx, (%esp)
+				# b_pop ()
+	addl	$8, %esp
+				# b_jump ( destination = .LC23 )
+	jmp	.LC23
+.LC22:
+ #  120
+ #  121
+ #  122
+ #  123
+				# b_push_ext_addr (W)
+	subl	$8, %esp
+	movl	$W, (%esp)
+				# b_push_ext_addr (W)
+	subl	$8, %esp
+	movl	$W, (%esp)
+				# b_deref (double)
+	movl	(%esp), %eax
+	fldl	(%eax)
+	fstpl	(%esp)
+				# b_push_const_double (1.0000000000000000e+00)
+	.section	.rodata
+	.align	8
+.LC25:
+	.long	0
+	.long	1072693248
+	.text
+	fldl	.LC25
+	subl	$8, %esp
+	fstpl	(%esp)
+				# b_arith_rel_op ( + , double)
+	fldl	8(%esp)
+	fldl	(%esp)
+	addl	$8, %esp
+	faddp	%st, %st(1)
+	fstpl	(%esp)
+				# b_assign (double)
+	fldl	(%esp)
+	addl	$8, %esp
+	movl	(%esp), %eax
+	fstpl	(%eax)
+	fstpl	(%esp)
+				# b_pop ()
+	addl	$8, %esp
+				# b_jump ( destination = .LC26 )
+	jmp	.LC26
+.LC24:
+ #  124
+				# b_push_ext_addr (W)
+	subl	$8, %esp
+	movl	$W, (%esp)
+				# b_push_ext_addr (W)
+	subl	$8, %esp
+	movl	$W, (%esp)
+				# b_deref (double)
+	movl	(%esp), %eax
+	fldl	(%eax)
+	fstpl	(%esp)
+				# b_push_const_double (1.0000000000000000e+00)
+	.section	.rodata
+	.align	8
+.LC27:
+	.long	0
+	.long	1072693248
+	.text
+	fldl	.LC27
+	subl	$8, %esp
+	fstpl	(%esp)
+				# b_arith_rel_op ( - , double)
+	fldl	8(%esp)
+	fldl	(%esp)
+	addl	$8, %esp
+	fsubrp	%st, %st(1)
+	fstpl	(%esp)
+				# b_assign (double)
+	fldl	(%esp)
+	addl	$8, %esp
+	movl	(%esp), %eax
+	fstpl	(%eax)
+	fstpl	(%esp)
+				# b_pop ()
+	addl	$8, %esp
+.LC26:
+ #  125
+ #  126
+ #  127
+ #  128
+				# b_push_ext_addr (Ca)
+	subl	$8, %esp
+	movl	$Ca, (%esp)
+				# b_push_const_int (65)
+	movl	$65, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_convert (signed long int -> unsigned char)
+				# b_assign (unsigned char)
+	movzbl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	movb	%dl, (%eax)
+	movb	%dl, (%esp)
+				# b_pop ()
+	addl	$8, %esp
+ #  129
+				# b_push_ext_addr (A)
+	subl	$8, %esp
+	movl	$A, (%esp)
+				# b_push_ext_addr (Ca)
+	subl	$8, %esp
+	movl	$Ca, (%esp)
+				# b_push_const_int (3)
+	movl	$3, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_push_const_int (1)
+	movl	$1, %eax
+	subl	$8, %esp
+	movl	%eax, (%esp)
+				# b_arith_rel_op ( - , signed long int)
+	movl	(%esp), %ecx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	subl	%ecx, %eax
+	movl	%eax, (%esp)
+				# b_ptr_arith_op ( + , signed long int, size = 1)
+	movl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	imull	$1, %edx, %edx
+	addl	%edx, %eax
+	movl	%eax, (%esp)
+				# b_deref (unsigned char)
+	movl	(%esp), %eax
+	movzbl	(%eax), %edx
+	movb	%dl, (%esp)
+ #  130
+				# b_push_ext_addr (A)
+	subl	$8, %esp
+	movl	$A, (%esp)
+				# b_push_ext_addr (Ia)
+	subl	$8, %esp
+	movl	$Ia, (%esp)
+				# b_deref (signed long int)
+	movl	(%esp), %eax
+	movl	(%eax), %edx
+	movl	%edx, (%esp)
+				# b_assign (signed long int)
+	movl	(%esp), %edx
+	addl	$8, %esp
+	movl	(%esp), %eax
+	movl	%edx, (%eax)
+	movl	%edx, (%esp)
+				# b_pop ()
+	addl	$8, %esp
+ #  131
+				# b_push_ext_addr (W)
+	subl	$8, %esp
+	movl	$W, (%esp)
+				# b_push_ext_addr (Ra)
+	subl	$8, %esp
+	movl	$Ra, (%esp)
+				# b_deref (double)
+	movl	(%esp), %eax
+	fldl	(%eax)
+	fstpl	(%esp)
+				# b_assign (double)
+	fldl	(%esp)
+	addl	$8, %esp
+	movl	(%esp), %eax
+	fstpl	(%eax)
+	fstpl	(%esp)
+				# b_pop ()
+	addl	$8, %esp
+ #  132
+				# b_push_ext_addr (W)
+	subl	$8, %esp
+	movl	$W, (%esp)
+				# b_push_ext_addr (Ra)
+	subl	$8, %esp
+	movl	$Ra, (%esp)
+ #  133
+				# b_push_ext_addr (Ra)
+	subl	$8, %esp
+	movl	$Ra, (%esp)
+				# b_push_ext_addr (W)
+	subl	$8, %esp
+	movl	$W, (%esp)
+				# b_deref (double)
+	movl	(%esp), %eax
+	fldl	(%eax)
+	fstpl	(%esp)
+ #  134
+				# b_push_ext_addr (A)
+	subl	$8, %esp
+	movl	$A, (%esp)
+ #  135
+				# b_push_ext_addr (W)
+	subl	$8, %esp
+	movl	$W, (%esp)
+				# b_push_ext_addr (Ra)
+	subl	$8, %esp
+	movl	$Ra, (%esp)
+				# b_deref (double)
+	movl	(%esp), %eax
+	fldl	(%eax)
+	fstpl	(%esp)
+				# b_assign (double)
+	fldl	(%esp)
+	addl	$8, %esp
+	movl	(%esp), %eax
+	fstpl	(%eax)
+	fstpl	(%esp)
+				# b_pop ()
+	addl	$8, %esp
+ #  136
+ #  137
+				# b_func_epilogue (main)
+	leave
+	ret
+	.size	main, .-main
+ #  138

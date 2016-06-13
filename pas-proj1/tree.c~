@@ -1,0 +1,125 @@
+#include "tree.h"
+#include "message.h"
+#include <stdlib.h>
+
+
+void tree_install_new_type( char *str , TYPE myType){
+	ST_DR myST_DR = stdr_alloc() ;
+	ST_ID myST_ID = st_enter_id(str);
+
+	myST_DR->tag = TYPENAME ;
+	myST_DR->u.typename.type = myType;
+
+	BOOLEAN abool =  st_install( myST_ID, myST_DR);
+
+	if(abool== FALSE ){
+		// print error message ...
+	}
+	msg("In tree_install_new_type\n");
+
+}
+
+void tree_array_head_init(){
+	array_head = (INDEX *)malloc(sizeof(INDEX));
+	array_head->next = NULL ;
+	msg("In tree_install_new_type\n");
+}
+
+
+void tree_insert_array_head( TYPE myPtr ){
+
+	INDEX_LIST node ;
+	node  = (INDEX *)malloc(sizeof(INDEX));
+	node->type = myPtr ;
+
+	if(array_head->next == NULL){
+		array_head->next = node ;
+	}
+
+	else{
+		node->next = array_head->next ;
+		array_head->next = node ;
+	}
+	msg("In tree_install_new_type\n");
+}
+
+TYPE tree_build_array ( TYPE object , INDEX_LIST indices){
+	return ty_build_array(object , indices );
+	msg("In tree_install_new_type\n");
+}
+void tree_unresolvedPtrList_init(){
+
+	hd = (TLIST_NODE *)malloc(sizeof(TLIST_NODE));
+	hd->next = NULL ;
+	msg("In tree_install_new_type\n");
+}
+
+void tree_resolve_unresolved_pointers(){
+
+	TYPE_LIST loop = hd->next ;
+	while(loop!=NULL){
+
+		TYPE objtype ;
+		int block ;
+		ST_ID id ;
+		objtype = ty_query_ptr(loop->type , id);
+		ST_DR dataRecord = st_lookup( id, &block);
+		ty_resolve_ptr(loop->type , objtype);
+		loop = loop->next ;
+	}
+	msg("In tree_install_new_type\n");
+
+}
+
+TYPE tree_build_unresolved_ptr( char * new_identifier){
+	void *myST_ID = st_enter_id( new_identifier ) ;
+	TYPE ret_type = ty_build_unresolved_ptr(myST_ID);
+	tree_insert_unresolved_ptr(ret_type);
+	msg("In tree_install_new_type\n");
+	return ret_type ;
+}
+
+void tree_insert_unresolved_ptr( TYPE myPtr ){
+
+	TYPE_LIST node ;
+	node  = (TLIST_NODE *)malloc(sizeof(TLIST_NODE));
+	node->type = myPtr ;
+
+	if(hd->next == NULL){
+		hd->next = node ;
+	}
+
+	else{
+		node->next = hd->next ;
+		hd->next = node ;
+	}
+	msg("In tree_install_new_type\n");
+}
+
+TYPE tree_build_basic( char *  myTypeTag ){
+
+
+	void * myST_ID  = st_enter_id( myTypeTag ) ;
+	int block  = 0 ;
+	ST_DR datarecord ;
+	datarecord  = st_lookup(myST_ID, &block);
+
+	if( datarecord->tag  ==  TYPENAME ){
+
+		return datarecord->u.typename.type ;
+
+	}
+	msg("In tree_install_new_type\n");
+	return NULL ;
+}
+
+TYPE tree_build_subrange( long low , long high ){
+	TYPE basic , subrange ;
+	basic  = ty_build_basic(TYSIGNEDINT);
+	if( low > high){
+		// Print error message ....
+	}
+	subrange = ty_build_subrange(basic , low , high);
+	return subrange ;
+
+}

@@ -1,0 +1,13 @@
+program T1L100err;
+
+type
+   IntPtr    = ^Integer;
+
+
+var
+  
+   m : ^Function(a,b : Integer; a : Real) : Integer;
+
+
+begin
+end.

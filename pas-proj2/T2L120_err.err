@@ -1,0 +1,5 @@
+line 22: ERROR -- Undeclared identifier "A" in expression
+line 23: ERROR -- Undeclared identifier "A" in expression
+line 25: ERROR -- Illegal conversion
+line 37: ERROR -- Undeclared identifier "Inner2" in expression
+line 43: ERROR -- Undeclared identifier "Inner" in expression

@@ -1,0 +1,6 @@
+line 22: ERROR -- Undeclared identifier "A" in expression
+line 23: ERROR -- Undeclared identifier "A" in expression
+line 25: ERROR -- Illegal conversion
+line 70: ERROR -- Undeclared identifier "C1" in expression
+line 71: ERROR -- Undeclared identifier "C1" in expression
+Segmentation fault (core dumped)

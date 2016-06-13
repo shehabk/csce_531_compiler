@@ -1,0 +1,2 @@
+Comments for self-test -------- Mon Apr 20, 2015 at 15:4:58 EDT
+  No pas-proj2 subdirectory found
